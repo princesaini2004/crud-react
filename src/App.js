@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import css from './App.css'
+import Create from './Crud/Create'
+import Indexpage from './Crud/Indexpage'
+import Update from './Crud/Update'
+import View from './Crud/Viewdata'
+import { BrowserRouter, Route, Router, Routes } from 'react-router-dom'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+      <Routes>
+        <Route exact path='/index' element={<Indexpage></Indexpage>}/>
+        <Route exact path='/' element={<Create></Create>}/>
+        <Route exact path='/update' element={<Update></Update>}/>
+        <Route exact path='/View' element={<View></View>}/>
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App
