@@ -1,8 +1,11 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 function Indexpage() {
+  const { from, userData } = useLocation().state || {};
+
   const [data, setData] = useState([]);
   const getdata = () => {
     axios.get("https://671b294cacf9aa94f6acbe93.mockapi.io/crud-test")
@@ -24,6 +27,9 @@ function Indexpage() {
   return (
     <>
       <div className="d-flex justify-content-between my-4 align-text-center container-xxl">
+      {from === "loginpage" && userData && (
+      <p>Logged-in User: {userData.name}</p>
+    )}
         <h2>Read Operation</h2>
         <Link to="/" className="btn btn-secondary m-3">Create</Link>
       </div>
